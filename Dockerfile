@@ -11,7 +11,8 @@ RUN apt update && apt install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    libzip-dev
 
 # Clean up apt cache
 RUN apt clean && rm -rf /var/lib/apt/lists/*

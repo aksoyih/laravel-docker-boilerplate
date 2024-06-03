@@ -6,17 +6,17 @@ services:
                 uid: 1000
             context: ./
             dockerfile: Dockerfile
-        image: larapi_image
-        container_name: larapi_container
+        image: laravel_docker_image
+        container_name: laravel_docker_container
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
             - ./:/var/www
         networks:
-            - larapi_network
+            - laravel_docker_network
     mysql:
         image: mysql:8.0
-        container_name: larapi_db
+        container_name: laravel_docker_db
         restart: unless-stopped
         environment:
             MYSQL_DATABASE: ${DB_DATABASE}
@@ -28,10 +28,10 @@ services:
         volumes:
             - ./docker-compose/mysql_data:/var/lib/mysql
         networks:
-            - larapi_network
+            - laravel_docker_network
     nginx:
         image: nginx:alpine
-        container_name: larapi_nginx
+        container_name: laravel_docker_nginx
         restart: unless-stopped
         ports:
             - 80:80
@@ -39,15 +39,15 @@ services:
             - ./:/var/www
             - ./docker-compose/nginx:/etc/nginx/conf.d/
         networks:
-            - larapi_network
+            - laravel_docker_network
     redis:
         image: redis:alpine
-        container_name: larapi_redis
+        container_name: laravel_docker_redis
         restart: unless-stopped
         networks:
-            - larapi_network
+            - laravel_docker_network
 networks:
-    larapi_network:
+    laravel_docker_network:
         driver: bridge
 volumes:
     mysql_data:

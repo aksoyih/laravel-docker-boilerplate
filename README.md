@@ -59,6 +59,6 @@ Edit the .env file to set your database credentials and any other environment va
 - redis: Redis cache container.
 
 ## Network Configuration
-All services are connected through the larapi_network.
+All services are connected through the laravel_docker_network.
 - ./docker-compose/mysql_data:/var/lib/mysql: Persistent storage for MySQL database.
 - ./docker-compose/nginx:/etc/nginx/conf.d/: Nginx configuration files.

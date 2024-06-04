@@ -14,6 +14,9 @@ RUN apt update && apt install -y \
     unzip \
     libzip-dev
 
+RUN pecl install redis \
+    && docker-php-ext-enable redis
+
 # Clean up apt cache
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 
